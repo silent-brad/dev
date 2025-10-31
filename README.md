@@ -1,16 +1,8 @@
-# devlog
+# dev
 
-> *My Developer Portfolio/Blog*
+> *My Developer Portfolio*
 
 Hosted on [dev.knightoffaith.systems](https://dev.knightoffaith.systems)
-
-Actual static site `www` directory is on [bwhtdev/bwhtdev.github.io](https://github.com/bwhtdev/bwhtdev.github.io)
-
-NOTE: This is based on [minblog (Minimal Static Markdown Blog Generator)](https://github.com/bwhtdev/minblog)
-
-### Commands to run
-- `nix-shell`
-- `nix develop | ./result/bin/serve`
 
 ### NOTES
 - Icons in links are sourced from [icons8](https://icons8.com/icons/set/bookmark)
@@ -20,8 +12,7 @@ NOTE: This is based on [minblog (Minimal Static Markdown Blog Generator)](https:
 - [x] Make mobile friendly
   - [x] Make link icons not break on mobile (on my iphone the icons don't show up at all)
 - [x] Make buttons Skeuomorphic
-- [x] Add blog
-- [x] Add blog list
+- [ ] Add projects
 - [ ] (When self host Gitea/Radicle:) Act as GitHub profile page with stats/repos etc (with API calls)
 - [ ] Switch images to WebP
 - [ ] Add cool link hover thing

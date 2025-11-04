@@ -1,0 +1,367 @@
+@font-face {
+  font-family: 'Crenzo';
+  src: url('/assets/fonts/Crenzo.ttf');
+  font-weight: i;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Triakis';
+  src: url('/assets/fonts/TriakisFont-Regular.otf');
+  font-weight: i;
+}
+
+@font-face {
+  font-family: 'Baunk';
+  src: url('/assets/fonts/Baunk.ttf');
+  font-style: normal;
+}
+
+:root {
+  --pri-dark: 144, 60, 60;
+  --sec-dark: 163, 82, 82;
+  --pri: 250, 160, 160;
+  --sec: 208, 138, 138;
+}
+
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+html {
+  display: block;
+}
+html, :host {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-feature-settings: var(--default-font-feature-settings, normal);
+  font-variation-settings: var(--default-font-variation-settings, normal);
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-moz-selection, ::selection {
+  background-color: rgb(var(--sec));
+  @media (prefers-color-scheme: dark) {
+    background-color: rgb(var(--sec-dark));
+  }
+}
+
+body {
+  display: block;
+  background-color: rgb(var(--pri));
+  @media (prefers-color-scheme: dark) {
+    background-color: rgb(var(--pri-dark));
+  }
+  font-family: 'Triakis';
+  @media (min-width: 768px) {
+    overflow: hidden;
+  }
+}
+
+main {
+  margin: 0 auto;
+  min-height: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  max-width: 64rem;
+  @media (min-width: 640px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  justify-content: center;
+}
+
+.hero {
+  padding-bottom: 2rem;
+  & p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #6B7280;
+    font-family: 'Triakis';
+    @media (prefers-color-scheme: dark) {
+      color: #9CA3AF;
+    }
+    @media (min-width: 768px) {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    & > i {
+      font-style: italic;
+      color: transparent;
+      -webkit-background-clip: text;
+              background-clip: text;
+      background-image: linear-gradient(to right, #903c3c, #D08A8A, #a35252);
+      @media (prefers-color-scheme: dark) {
+        background-image: linear-gradient(to right, #FAA0A0, #B67979, #D08A8A);
+      }
+    }
+  }
+}
+
+svg {
+  overflow-clip-margin: content-box;
+  overflow: hidden;
+}
+
+h1 {
+  display: block;
+  unicode-bidi: isolate;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: #111827;
+  font-family: 'Crenzo';
+  @media (prefers-color-scheme: dark) {
+    color: #F9FAFB;
+  }
+  @media (min-width: 768px) {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #374151;
+  font-family: 'Baunk';
+  @media (prefers-color-scheme: dark) {
+    color: #D1D5DB;
+  }
+  @media (min-width: 768px) {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.btn {
+  padding: 0.6em;
+  margin: 0 0.3em;
+  display: inline-block;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  border-style: none;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: inset 0 -2px 0 0 #BD7070, inset 0 0 1px 1px #D69292,
+    0 1px 2px 1px rgba(56, 11, 11, 0.4);
+  background: linear-gradient(-225deg, rgba(184,113,113,0.5), rgba(208,138,138,0.5));
+  @media (prefers-color-scheme: dark) {
+    box-shadow: inset 0 -2px 0 0 #903E3E, inset 0 0 1px 1px #A95A5A,
+      0 1px 2px 1px rgba(27, 1, 1, 0.4);
+    background: linear-gradient(-225deg, rgba(138,62,62,0.5), rgba(163,82,82,0.5));
+  }
+}
+
+.btn-hover:hover, .link-active {
+  box-shadow: inset 0 -2px 0 0 rgba(163,82,82,0.4), inset 0 0 1px 1px rgba(163,82,82,0.4),
+    0 1px 2px 1px rgba(163,82,82,0.4);
+  @media (prefers-color-scheme: dark) {
+    box-shadow: inset 0 -2px 0 0 rgba(250,160,160,0.4), inset 0 0 1px 1px rgba(250,160,160,0.4),
+      0 1px 2px 1px rgba(250,160,160,0.4);
+  }
+}
+
+.tech {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tech-icon {
+  width: 4rem;
+  height: 4rem;
+  @media (min-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+  }
+  & svg {
+    fill: #A35252;
+    @media (prefers-color-scheme: dark) {
+      fill: #D08A8A;
+    }
+  }
+}
+
+footer {
+  padding-bottom: 2rem;
+  width: 100%;
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 2.5rem;
+    padding-bottom: 0;
+  }
+  @media (min-width: 1024px) {
+    bottom: 3.5rem;
+  }
+  & .footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media (min-width: 768px) {
+      position: relative;
+    }
+    & > div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      & a {
+        width: 3rem;
+        height: 3rem;
+        @media (min-width: 768px) {
+          width: 3.5rem;
+          height: 3.5rem;
+        }
+        & > svg {
+          fill: #1F2937;
+          @media (prefers-color-scheme: dark) {
+            fill: #D08A8A;
+          }
+        }
+        & > img {
+          width: 1.75rem;
+          height: 1.75rem;
+          @media (min-width: 768px) {
+            width: 2.25rem;
+            height: 2.25rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+ul.sites {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: 'Triakis';
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: list-item;
+  text-align: -webkit-match-parent;
+  unicode-bidi: isolate;
+  list-style: none;
+
+  @media (min-width: 768px) {
+    position: relative;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  & li {
+    padding: 0.25rem 0;
+
+    & > a {
+      text-decoration: none;
+      color: #6B7280;
+      @media (prefers-color-scheme: dark) {
+        color: #9CA3AF;
+      }
+
+      &:hover {
+        color: rgba(163,82,82,0.4);
+        @media (prefers-color-scheme: dark) {
+          color: rgba(250,160,160,0.4);
+        }
+      }
+    }
+  }
+}
+
+.tech-icon.ts-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(0,122,204,0.4), inset 0 0 1px 1px rgba(0,122,204,0.4),
+    0 1px 2px 1px rgba(0,122,204,0.4);
+}
+
+.tech-icon.go-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(0,172,215,0.4), inset 0 0 1px 1px rgba(0,172,215,0.4),
+    0 1px 2px 1px rgba(0,172,215,0.4);
+}
+
+.tech-icon.html-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(228,77,38,0.4), inset 0 0 1px 1px rgba(228,77,38,0.4),
+    0 1px 2px 1px rgba(228,77,38,0.4);
+}
+
+.tech-icon.css-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(21,114,182,0.4), inset 0 0 1px 1px rgba(21,114,182,0.4),
+    0 1px 2px 1px rgba(21,114,182,0.4);
+}
+
+.tech-icon.tailwind-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(56,178,172,0.4), inset 0 0 1px 1px rgba(56,178,172,0.4),
+    0 1px 2px 1px rgba(56,178,172,0.4);
+}
+
+.tech-icon.angular-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(196,71,58,0.4), inset 0 0 1px 1px rgba(196,71,58,0.4),
+    0 1px 2px 1px rgba(196,71,58,0.4);
+}
+
+.tech-icon.nim-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(243,212,0,0.4), inset 0 0 1px 1px rgba(243,212,0,0.4),
+    0 1px 2px 1px rgba(243,212,0,0.4);
+}
+
+.tech-icon.htmx-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(52,101,164,0.4), inset 0 0 1px 1px rgba(52,101,164,0.4),
+    0 1px 2px 1px rgba(52,101,164,0.4);
+}
+
+.tech-icon.nix-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(82,119,195,0.4), inset 0 0 1px 1px rgba(82,119,195,0.4),
+    0 1px 2px 1px rgba(82,119,195,0.4);
+}
+
+.tech-icon.nushell-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(59,166,40,0.4), inset 0 0 1px 1px rgba(59,166,40,0.4),
+    0 1px 2px 1px rgba(59,166,40,0.4);
+}
+
+.tech-icon.sqlite-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(53,132,179,0.4), inset 0 0 1px 1px rgba(53,132,179,0.4),
+    0 1px 2px 1px rgba(53,132,179,0.4);
+}
+
+.tech-icon.hs-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(144,79,140,0.4), inset 0 0 1px 1px rgba(144,79,140,0.4),
+    0 1px 2px 1px rgba(144,79,140,0.4);
+}
+
+.tech-icon.lua-icon:hover {
+  box-shadow: inset 0 -2px 0 0 rgba(0,0,128,0.4), inset 0 0 1px 1px rgba(0,0,128,0.4),
+    0 1px 2px 1px rgba(0,0,128,0.4);
+}

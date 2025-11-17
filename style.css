@@ -194,18 +194,16 @@ h2 {
   justify-content: center;
 }
 
-.tech-icon {
+.tech-icon svg {
   width: 4rem;
   height: 4rem;
   @media (min-width: 768px) {
     width: 5rem;
     height: 5rem;
   }
-  & svg {
-    fill: #A35252;
-    @media (prefers-color-scheme: dark) {
-      fill: #D08A8A;
-    }
+  fill: #A35252;
+  @media (prefers-color-scheme: dark) {
+    fill: #D08A8A;
   }
 }
 
@@ -234,24 +232,25 @@ footer {
       flex-wrap: wrap;
       gap: 0.5rem;
       & a {
-        width: 3rem;
+        /*width: 3rem;
         height: 3rem;
         @media (min-width: 768px) {
           width: 3.5rem;
           height: 3.5rem;
-        }
-        & > svg {
-          fill: #1F2937;
-          @media (prefers-color-scheme: dark) {
-            fill: #D08A8A;
-          }
-        }
-        & > img {
+        }*/
+        & > svg, & > img {
           width: 1.75rem;
           height: 1.75rem;
           @media (min-width: 768px) {
             width: 2.25rem;
             height: 2.25rem;
+          }
+        }
+
+        & > svg {
+          fill: #1F2937;
+          @media (prefers-color-scheme: dark) {
+            fill: #D08A8A;
           }
         }
       }

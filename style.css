@@ -232,12 +232,6 @@ footer {
       flex-wrap: wrap;
       gap: 0.5rem;
       & a {
-        /*width: 3rem;
-        height: 3rem;
-        @media (min-width: 768px) {
-          width: 3.5rem;
-          height: 3.5rem;
-        }*/
         & > svg, & > img {
           width: 1.75rem;
           height: 1.75rem;

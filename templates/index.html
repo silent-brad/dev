@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <div class="hero">
+        <h1>{{ site.name }}</h1>
+        <h2>{{ site.subtitle }}</h2>
+        <p>
+          I craft <i>eloquent</i> and <i>efficient</i> apps on the wild web
+          and strive to quench my insatiable thirst for <i>learning</i>.
+        </p>
+        <p>
+          Open for software development work <i>remotely</i> or near
+          <i>Richmond, VA</i>.
+        </p>
+      </div>
+
+{% include "tech.html" %}
+
+{%- if posts %}
+      <h2>Posts</h2>
+      <ul class="post-list">
+{%- for post in posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date }}">{{ post.date_formatted }}</time>
+        </li>
+{%- endfor %}
+      </ul>
+{%- endif %}
+
+{%- if tags %}
+      <h2>Tags</h2>
+      <ul>
+{%- for tag in tags %}
+        <li><a href="{{ tag.url }}">{{ tag.name }}</a> ({{ tag.count }})</li>
+{%- endfor %}
+      </ul>
+{%- endif %}
+
+{% endblock %}

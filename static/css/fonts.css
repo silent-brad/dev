@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Crenzo";
+  src: url("/assets/fonts/Crenzo.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Triakis";
+  src: url("/assets/fonts/TriakisFont-Regular.otf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Baunk";
+  src: url("/assets/fonts/Baunk.ttf");
+  font-style: normal;
+}

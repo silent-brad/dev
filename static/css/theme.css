@@ -1,0 +1,60 @@
+:root {
+  /* Core theme colors in OKLCH */
+  --color-bg-primary: oklch(0.75 0.15 20);
+  --color-bg-secondary: oklch(0.7 0.12 20);
+  --color-accent: oklch(0.55 0.15 20);
+  --color-accent-dark: oklch(0.48 0.15 20);
+  --color-text-primary: oklch(0.2 0.02 270);
+  --color-text-secondary: oklch(0.55 0.05 260);
+  --color-text-muted: oklch(0.7 0.03 260);
+  --color-surface: oklch(0.98 0.01 270);
+
+  /* Shadows */
+  --shadow-color: oklch(0.25 0.1 20 / 0.4);
+  --shadow-inset-dark: oklch(0.5 0.1 20);
+  --shadow-inset-light: oklch(0.7 0.1 20);
+
+  /* Tech icon brand colors */
+  --tech-ts: oklch(0.55 0.15 250);
+  --tech-go: oklch(0.7 0.15 220);
+  --tech-html: oklch(0.6 0.2 45);
+  --tech-css: oklch(0.5 0.15 250);
+  --tech-tailwind: oklch(0.7 0.15 195);
+  --tech-angular: oklch(0.55 0.18 30);
+  --tech-nim: oklch(0.85 0.2 100);
+  --tech-htmx: oklch(0.5 0.15 260);
+  --tech-nix: oklch(0.55 0.15 260);
+  --tech-nushell: oklch(0.6 0.2 145);
+  --tech-sqlite: oklch(0.55 0.15 245);
+  --tech-java: oklch(0.7 0.18 70);
+  --tech-ocaml: oklch(0.7 0.2 80);
+  --tech-lua: oklch(0.2 0.2 270);
+
+  /* Typography */
+  --font-display: "Crenzo", system-ui, sans-serif;
+  --font-body: "Triakis", system-ui, sans-serif;
+  --font-heading: "Baunk", system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary: oklch(0.48 0.12 25);
+    --color-bg-secondary: oklch(0.55 0.14 25);
+    --color-accent: oklch(0.75 0.12 20);
+    --color-accent-dark: oklch(0.85 0.1 20);
+    --color-text-primary: oklch(0.98 0.01 270);
+    --color-text-secondary: oklch(0.85 0.03 270);
+    --color-text-muted: oklch(0.7 0.03 260);
+    --color-surface: oklch(0.2 0.02 270);
+    --shadow-color: oklch(0.1 0.05 20 / 0.4);
+    --shadow-inset-dark: oklch(0.3 0.1 20);
+    --shadow-inset-light: oklch(0.4 0.1 20);
+  }
+}

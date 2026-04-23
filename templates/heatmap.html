@@ -1,0 +1,243 @@
+<!-- GitHub Contribution Heatmap -->
+<div class="heatmap-container">
+  <h2>GitHub Activity</h2>
+  <div class="heatmap-wrapper">
+    <div class="heatmap-scroll">
+      <div class="heatmap-months" id="heatmap-months"></div>
+      <div class="heatmap-body">
+        <div class="heatmap-days">
+          <span></span>
+          <span>Mon</span>
+          <span></span>
+          <span>Wed</span>
+          <span></span>
+          <span>Fri</span>
+          <span></span>
+        </div>
+        <div class="heatmap-grid" id="heatmap-grid"></div>
+      </div>
+      <div class="heatmap-tooltip" id="heatmap-tooltip"></div>
+    </div>
+    <div class="heatmap-footer">
+      <span class="heatmap-total" id="heatmap-total"></span>
+      <div class="heatmap-legend">
+        <span>Less</span>
+        <span class="heatmap-cell" data-level="0"></span>
+        <span class="heatmap-cell" data-level="1"></span>
+        <span class="heatmap-cell" data-level="2"></span>
+        <span class="heatmap-cell" data-level="3"></span>
+        <span class="heatmap-cell" data-level="4"></span>
+        <span>More</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="heatmap-wrapper lang-wrapper">
+    <h3 class="lang-heading">Languages</h3>
+    <div class="lang-bar-container">
+      <div class="lang-bar" id="lang-bar"></div>
+      <div class="heatmap-tooltip" id="lang-tooltip"></div>
+    </div>
+    <div class="lang-list" id="lang-list"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var CELL_SIZE = 13; // 11px cell + 2px gap
+
+  fetch('/github-contributions.json')
+    .then(function (r) { return r.json(); })
+    .then(function (json) {
+      if (!json.data || !json.data.user) return;
+
+      // --- Heatmap ---
+      var calendar = json.data.user.contributionsCollection.contributionCalendar;
+      var weeks = calendar.weeks;
+      var total = calendar.totalContributions;
+      var grid = document.getElementById('heatmap-grid');
+      var monthsEl = document.getElementById('heatmap-months');
+      var totalEl = document.getElementById('heatmap-total');
+
+      totalEl.textContent = total.toLocaleString() + ' contributions in the last year';
+
+      // Render cells first so we know the grid width
+      var maxCount = 0;
+      for (var w = 0; w < weeks.length; w++) {
+        var days = weeks[w].contributionDays;
+        for (var d = 0; d < days.length; d++) {
+          if (days[d].contributionCount > maxCount) maxCount = days[d].contributionCount;
+        }
+      }
+
+      var cellsHtml = '';
+      for (var w = 0; w < weeks.length; w++) {
+        var days = weeks[w].contributionDays;
+        cellsHtml += '<div class="heatmap-week">';
+        for (var d = 0; d < days.length; d++) {
+          var count = days[d].contributionCount;
+          var level = 0;
+          if (count > 0) level = 1;
+          if (count >= Math.ceil(maxCount * 0.25)) level = 2;
+          if (count >= Math.ceil(maxCount * 0.5)) level = 3;
+          if (count >= Math.ceil(maxCount * 0.75)) level = 4;
+          cellsHtml += '<span class="heatmap-cell" data-level="' + level +
+            '" data-count="' + count + '" data-date="' + days[d].date + '"></span>';
+        }
+        cellsHtml += '</div>';
+      }
+      grid.innerHTML = cellsHtml;
+
+      // Tooltip
+      var tooltip = document.getElementById('heatmap-tooltip');
+      var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      var monthFull = ['January','February','March','April','May','June',
+        'July','August','September','October','November','December'];
+
+      grid.addEventListener('mouseover', function (e) {
+        var cell = e.target.closest('.heatmap-cell[data-date]');
+        if (!cell) return;
+        var count = cell.getAttribute('data-count');
+        var date = new Date(cell.getAttribute('data-date') + 'T00:00:00');
+        var label = count === '0' ? 'No contributions' :
+          count + ' contribution' + (count === '1' ? '' : 's');
+        var dateStr = dayNames[date.getDay()] + ', ' +
+          monthFull[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+        tooltip.innerHTML = '<strong>' + label + '</strong><br>' + dateStr;
+        var scrollEl = grid.closest('.heatmap-scroll');
+        var scrollRect = scrollEl.getBoundingClientRect();
+        var cellRect = cell.getBoundingClientRect();
+        var tipLeft = cellRect.left - scrollRect.left + scrollEl.scrollLeft + cellRect.width / 2;
+        var tipTop = cellRect.top - scrollRect.top - 6;
+
+        // Show off-screen first to measure, then position
+        tooltip.classList.add('visible');
+        tooltip.style.left = tipLeft + 'px';
+        tooltip.style.top = tipTop + 'px';
+        tooltip.classList.remove('flipped');
+
+        // If tooltip overflows above the container, flip below the cell
+        var tipRect = tooltip.getBoundingClientRect();
+        if (tipRect.top < scrollRect.top) {
+          tipTop = cellRect.bottom - scrollRect.top + 6;
+          tooltip.style.top = tipTop + 'px';
+          tooltip.classList.add('flipped');
+        }
+      });
+
+      grid.addEventListener('mouseout', function (e) {
+        if (e.target.closest('.heatmap-cell[data-date]')) {
+          tooltip.classList.remove('visible');
+        }
+      });
+
+      // Build month labels using absolute positioning
+      var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var lastMonth = -1;
+      var monthHtml = '';
+      for (var w = 0; w < weeks.length; w++) {
+        var day = weeks[w].contributionDays[0];
+        var month = new Date(day.date).getMonth();
+        if (month !== lastMonth) {
+          var left = w * CELL_SIZE;
+          monthHtml += '<span style="position:absolute;left:' + left + 'px">' +
+            monthNames[month] + '</span>';
+          lastMonth = month;
+        }
+      }
+      monthsEl.innerHTML = monthHtml;
+
+      // --- Languages ---
+      var repos = json.data.user.repositories;
+      if (repos && repos.nodes) {
+        var langTotals = {};
+        var langColors = {};
+        for (var r = 0; r < repos.nodes.length; r++) {
+          var edges = repos.nodes[r].languages && repos.nodes[r].languages.edges;
+          if (!edges) continue;
+          for (var e = 0; e < edges.length; e++) {
+            var name = edges[e].node.name;
+            var size = edges[e].size;
+            var color = edges[e].node.color;
+            langTotals[name] = (langTotals[name] || 0) + size;
+            if (color) langColors[name] = color;
+          }
+        }
+
+        // Sort by size
+        var langs = [];
+        var grandTotal = 0;
+        for (var name in langTotals) {
+          langs.push({ name: name, size: langTotals[name], color: langColors[name] || '#a35252' });
+          grandTotal += langTotals[name];
+        }
+        langs.sort(function (a, b) { return b.size - a.size; });
+
+        // Take top 8, group the rest as "Other"
+        var top = langs.slice(0, 8);
+        var otherSize = 0;
+        for (var i = 8; i < langs.length; i++) otherSize += langs[i].size;
+        if (otherSize > 0) top.push({ name: 'Other', size: otherSize, color: '#6b7280' });
+
+        // Render stacked bar
+        var barHtml = '';
+        for (var i = 0; i < top.length; i++) {
+          var pct = (top[i].size / grandTotal * 100);
+          if (pct < 0.5) continue;
+          barHtml += '<div class="lang-bar-seg" style="width:' + pct.toFixed(2) +
+            '%;background:' + top[i].color + '" data-lang="' + top[i].name +
+            '" data-pct="' + pct.toFixed(1) + '"></div>';
+        }
+        var langBar = document.getElementById('lang-bar');
+        langBar.innerHTML = barHtml;
+
+        // Language bar tooltip
+        var langTip = document.getElementById('lang-tooltip');
+        var langContainer = langBar.parentElement;
+
+        langBar.addEventListener('mouseover', function (e) {
+          var seg = e.target.closest('.lang-bar-seg');
+          if (!seg) return;
+          langTip.innerHTML = '<strong>' + seg.getAttribute('data-lang') +
+            '</strong> ' + seg.getAttribute('data-pct') + '%';
+          langTip.classList.add('visible');
+          langTip.classList.remove('flipped');
+
+          var containerRect = langContainer.getBoundingClientRect();
+          var segRect = seg.getBoundingClientRect();
+          var tipLeft = segRect.left - containerRect.left + segRect.width / 2;
+          var tipTop = segRect.top - containerRect.top - 6;
+          langTip.style.left = tipLeft + 'px';
+          langTip.style.top = tipTop + 'px';
+
+          var tipRect = langTip.getBoundingClientRect();
+          if (tipRect.top < containerRect.top) {
+            tipTop = segRect.bottom - containerRect.top + 6;
+            langTip.style.top = tipTop + 'px';
+            langTip.classList.add('flipped');
+          }
+        });
+
+        langBar.addEventListener('mouseout', function (e) {
+          if (e.target.closest('.lang-bar-seg')) {
+            langTip.classList.remove('visible');
+          }
+        });
+
+        // Render legend list
+        var listHtml = '';
+        for (var i = 0; i < top.length; i++) {
+          var pct = (top[i].size / grandTotal * 100);
+          if (pct < 0.5) continue;
+          listHtml += '<div class="lang-item">' +
+            '<span class="lang-dot" style="background:' + top[i].color + '"></span>' +
+            '<span class="lang-name">' + top[i].name + '</span>' +
+            '<span class="lang-pct">' + pct.toFixed(1) + '%</span>' +
+            '</div>';
+        }
+        document.getElementById('lang-list').innerHTML = listHtml;
+      }
+    })
+    .catch(function () {});
+})();
+</script>

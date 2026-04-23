@@ -7,7 +7,7 @@ I built a standalone Game of Life device: ESP32-S3, 5-inch touchscreen, Nim. No 
 
 [[file:/post-imgs/game-of-life-esp32.gif]]
 
-[[file:/post-imgs/game-of-life-esp32.jpg]]
+# [[file:/post-imgs/game-of-life-esp32.jpg]]
 
 ** Why Nim on an ESP32?
 
@@ -25,7 +25,7 @@ The project uses [[https://github.com/elcritch/nesper][Nesper]] for I2C, GPIO, a
 
 200×112 grid, each cell 4×4 pixels, filling 800×448 above a 32-pixel UI bar. Toroidal wrapping — gliders that leave one edge come back on the other.
 
-#+begin_src nim
+#+BEGIN_SRC nim
 for y in 0 ..< h:
   for x in 0 ..< w:
     let neighbors = ... # sum of 8 surrounding cells (with wrapping)
@@ -35,7 +35,7 @@ for y in 0 ..< h:
          (alive == 0 and neighbors == 3): 1'u8
       else: 0'u8
 swap(sim.cells, sim.scratch)
-#+end_src
+#+END_SRC
 
 Double-buffered with a scratch array. No allocations. Just ~swap~.
 
@@ -43,7 +43,7 @@ Double-buffered with a scratch array. No allocations. Just ~swap~.
 
 The best feature: every separate organism gets its own color. Flood-fill with an explicit stack (no recursion — you don't have the stack space on a microcontroller). Each connected group gets a label, the label hashes to RGB565:
 
-#+begin_src nim
+#+BEGIN_SRC nim
 proc label_to_color(label: uint16): uint16 =
   var h = label * 0x9E37'u16
   h = h xor (h shr 7)
@@ -52,7 +52,7 @@ proc label_to_color(label: uint16): uint16 =
   let g = ((h shr 5) and 0x3F) or 0x10
   let b = ((h shr 11) and 0x1F) or 0x08
   (r shl 11) or (g shl 5) or b
-#+end_src
+#+END_SRC
 
 The ~or~ floors prevent colors too dark to see. Cheap enough to run per-pixel at 30 FPS.
 

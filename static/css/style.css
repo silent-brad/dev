@@ -1,10 +1,34 @@
 @import "./fonts.css";
+@import "./tech-icons.css";
+@import "./highlighter.css";
 
 :root {
-  --pri-dark: 144, 60, 60;
-  --sec-dark: 163, 82, 82;
   --pri: 250, 160, 160;
   --sec: 208, 138, 138;
+
+  --color-text-body: #6b7280;
+
+  /* Typography */
+  --font-display: "Crenzo", system-ui, sans-serif;
+  --font-body: "Triakis", system-ui, sans-serif;
+  --font-heading: "Baunk", system-ui, sans-serif;
+  --font-code: "Fira Code", Monaco, Consolas, Ubuntu Mono, monospace;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pri: 144, 60, 60;
+    --sec: 163, 82, 82;
+
+    --color-text-body: #9ca3af;
+  }
 }
 
 *,
@@ -31,26 +55,26 @@ html,
   -webkit-tap-highlight-color: transparent;
 }
 
-::-moz-selection,
 ::selection {
-  background-color: rgb(var(--sec));
-  @media (prefers-color-scheme: dark) {
-    background-color: rgb(var(--sec-dark));
-  }
+  background-color: var(--color-text-body);
+  color: rgb(var(--pri));
+  -webkit-text-fill-color: rgb(var(--pri));
+}
+::-moz-selection {
+  background-color: var(--color-text-body);
+  color: rgb(var(--pri));
 }
 
 body {
   display: block;
   background-color: rgb(var(--pri));
-  @media (prefers-color-scheme: dark) {
-    background-color: rgb(var(--pri-dark));
-  }
-  font-family: "Triakis";
+  font-family: var(--font-body);
   min-height: 100vh;
   position: relative;
   @media (min-width: 768px) {
     padding-bottom: 6rem;
   }
+  color: var(--color-text-body);
 }
 
 main {
@@ -83,11 +107,8 @@ section {
     margin-bottom: 1rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
-    color: #6b7280;
-    font-family: "Triakis";
-    @media (prefers-color-scheme: dark) {
-      color: #9ca3af;
-    }
+    color: var(--color-text-body);
+    font-family: var(--font-body);
     @media (min-width: 768px) {
       font-size: 1.875rem;
       line-height: 2.25rem;
@@ -111,6 +132,13 @@ svg {
   overflow: hidden;
 }
 
+a {
+  color: #a35252;
+  @media (prefers-color-scheme: dark) {
+    color: #d08a8a;
+  }
+}
+
 h1 {
   display: block;
   unicode-bidi: isolate;
@@ -120,7 +148,7 @@ h1 {
   font-size: 1.875rem;
   line-height: 2.25rem;
   color: #111827;
-  font-family: "Crenzo";
+  font-family: var(--font-display);
   @media (prefers-color-scheme: dark) {
     color: #f9fafb;
   }
@@ -136,7 +164,7 @@ h2 {
   font-size: 1.5rem;
   line-height: 2rem;
   color: #374151;
-  font-family: "Baunk";
+  font-family: var(--font-heading);
   @media (prefers-color-scheme: dark) {
     color: #d1d5db;
   }
@@ -145,6 +173,9 @@ h2 {
     line-height: 2.5rem;
   }
 }
+
+/* h3 { */
+/* } */
 
 .btn {
   padding: 0.6em;
@@ -191,27 +222,6 @@ h2 {
       inset 0 -2px 0 0 rgba(250, 160, 160, 0.4),
       inset 0 0 1px 1px rgba(250, 160, 160, 0.4),
       0 1px 2px 1px rgba(250, 160, 160, 0.4);
-  }
-}
-
-.tech {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.tech-icon svg {
-  width: 4rem;
-  height: 4rem;
-  @media (min-width: 768px) {
-    width: 5rem;
-    height: 5rem;
-  }
-  fill: #a35252;
-  @media (prefers-color-scheme: dark) {
-    fill: #d08a8a;
   }
 }
 
@@ -270,7 +280,7 @@ ul.sites {
   align-items: center;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-family: "Triakis";
+  font-family: var(--font-body);
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: list-item;
@@ -304,65 +314,59 @@ ul.sites {
   }
 }
 
-.tech-icon:hover {
+.preview-card {
+  position: fixed;
+  z-index: 100;
+  max-width: 300px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: rgb(var(--pri));
   box-shadow:
-    inset 0 -2px 0 0 oklch(from var(--tech-color) l c h / 0.4),
-    inset 0 0 1px 1px oklch(from var(--tech-color) l c h / 0.4),
-    0 1px 2px 1px oklch(from var(--tech-color) l c h / 0.4);
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 1px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+
+  &.visible {
+    opacity: 1;
+  }
 }
 
-.tech-icon.ts-icon {
-  --tech-color: oklch(54.31% 0.172 248.14);
+.preview-card-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
 }
 
-.tech-icon.go-icon {
-  --tech-color: oklch(69.87% 0.127 219.78);
+.preview-card-body {
+  padding: var(--space-sm) var(--space-md);
 }
 
-.tech-icon.html-icon {
-  --tech-color: oklch(59.32% 0.208 35.24);
+.preview-card-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: #111827;
+  @media (prefers-color-scheme: dark) {
+    color: #f9fafb;
+  }
 }
 
-.tech-icon.css-icon {
-  --tech-color: oklch(54.32% 0.136 245.8);
+.preview-card-desc {
+  margin-top: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--color-text-body);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.tech-icon.tailwind-icon {
-  --tech-color: oklch(70.54% 0.106 194.9);
-}
-
-.tech-icon.angular-icon {
-  --tech-color: oklch(56.33% 0.169 26.17);
-}
-
-.tech-icon.nim-icon {
-  --tech-color: oklch(82.87% 0.185 99.17);
-}
-
-.tech-icon.htmx-icon {
-  --tech-color: oklch(52.89% 0.127 253.27);
-}
-
-.tech-icon.nix-icon {
-  --tech-color: oklch(59.28% 0.139 255.26);
-}
-
-.tech-icon.nushell-icon {
-  --tech-color: oklch(63.42% 0.191 144.41);
-}
-
-.tech-icon.sqlite-icon {
-  --tech-color: oklch(57.25% 0.134 245.74);
-}
-
-.tech-icon.java-icon {
-  --tech-color: oklch(74.21% 0.172 65.56);
-}
-
-.tech-icon.ocaml-icon {
-  --tech-color: oklch(73.6% 0.178 65.53);
-}
-
-.tech-icon.lua-icon {
-  --tech-color: oklch(26.72% 0.173 267.2);
+code,
+.line {
+  font-family: var(--font-code) !important;
+  font-feature-settings: normal;
 }

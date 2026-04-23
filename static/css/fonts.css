@@ -1,18 +1,25 @@
 @font-face {
   font-family: "Crenzo";
-  src: url("/assets/fonts/Crenzo.ttf");
+  src: url("/fonts/Crenzo.ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Triakis";
-  src: url("/assets/fonts/TriakisFont-Regular.otf");
+  src: url("/fonts/TriakisFont-Regular.otf");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Baunk";
-  src: url("/assets/fonts/Baunk.ttf");
+  src: url("/fonts/Baunk.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("/fonts/FiraCode.ttf");
+  font-weight: i;
   font-style: normal;
 }

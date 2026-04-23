@@ -2,12 +2,76 @@
 
 {% block title %}{{ heading }} — {{ site.name }}{% endblock %}
 
+{% block head %}
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  var card = document.getElementById("preview-card");
+  var cardImg = document.getElementById("preview-card-image");
+  var cardTitle = document.getElementById("preview-card-title");
+  var cardDesc = document.getElementById("preview-card-desc");
+  var links = document.querySelectorAll("ul.sites a[data-preview-title]");
+
+  links.forEach(function (link) {
+    link.addEventListener("mouseenter", function (e) {
+      var title = link.getAttribute("data-preview-title") || "";
+      var desc = link.getAttribute("data-preview-desc") || "";
+      var image = link.getAttribute("data-preview-image") || "";
+
+      cardTitle.textContent = title;
+      cardDesc.textContent = desc;
+      cardDesc.style.display = desc ? "" : "none";
+
+      if (image) {
+        cardImg.src = image;
+        cardImg.style.display = "";
+      } else {
+        cardImg.style.display = "none";
+      }
+
+      card.classList.add("visible");
+      positionCard(e);
+    });
+
+    link.addEventListener("mousemove", positionCard);
+
+    link.addEventListener("mouseleave", function () {
+      card.classList.remove("visible");
+    });
+  });
+
+  function positionCard(e) {
+    var x = e.clientX + 16;
+    var y = e.clientY + 16;
+    var rect = card.getBoundingClientRect();
+
+    if (x + rect.width > window.innerWidth) {
+      x = e.clientX - rect.width - 16;
+    }
+    if (y + rect.height > window.innerHeight) {
+      y = e.clientY - rect.height - 16;
+    }
+
+    card.style.left = x + "px";
+    card.style.top = y + "px";
+  }
+});
+</script>
+{% endblock %}
+
 {% block content %}
       <h2>{{ heading }}</h2>
 
       <ul class="sites">
 {%- for link in links %}
-        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+        <li><a href="{{ link.url }}"{% if link.og_title %} data-preview-title="{{ link.og_title }}"{% endif %}{% if link.og_desc %} data-preview-desc="{{ link.og_desc }}"{% endif %}{% if link.og_image %} data-preview-image="{{ link.og_image }}"{% endif %}>{{ link.name }}</a></li>
 {%- endfor %}
       </ul>
+
+      <div class="preview-card" id="preview-card">
+        <img class="preview-card-image" id="preview-card-image" src="" alt="" />
+        <div class="preview-card-body">
+          <div class="preview-card-title" id="preview-card-title"></div>
+          <div class="preview-card-desc" id="preview-card-desc"></div>
+        </div>
+      </div>
 {% endblock %}

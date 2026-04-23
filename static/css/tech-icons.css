@@ -1,0 +1,83 @@
+.tech {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tech-icon svg {
+  width: 4rem;
+  height: 4rem;
+  @media (min-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+  }
+  fill: #a35252;
+  @media (prefers-color-scheme: dark) {
+    fill: #d08a8a;
+  }
+}
+
+.tech-icon:hover {
+  box-shadow:
+    inset 0 -2px 0 0 oklch(from var(--tech-color) l c h / 0.4),
+    inset 0 0 1px 1px oklch(from var(--tech-color) l c h / 0.4),
+    0 1px 2px 1px oklch(from var(--tech-color) l c h / 0.4);
+}
+
+.tech-icon.ts-icon {
+  --tech-color: oklch(54.31% 0.172 248.14);
+}
+
+.tech-icon.go-icon {
+  --tech-color: oklch(69.87% 0.127 219.78);
+}
+
+.tech-icon.html-icon {
+  --tech-color: oklch(59.32% 0.208 35.24);
+}
+
+.tech-icon.css-icon {
+  --tech-color: oklch(54.32% 0.136 245.8);
+}
+
+.tech-icon.tailwind-icon {
+  --tech-color: oklch(70.54% 0.106 194.9);
+}
+
+.tech-icon.angular-icon {
+  --tech-color: oklch(56.33% 0.169 26.17);
+}
+
+.tech-icon.nim-icon {
+  --tech-color: oklch(82.87% 0.185 99.17);
+}
+
+.tech-icon.htmx-icon {
+  --tech-color: oklch(52.89% 0.127 253.27);
+}
+
+.tech-icon.nix-icon {
+  --tech-color: oklch(59.28% 0.139 255.26);
+}
+
+.tech-icon.nushell-icon {
+  --tech-color: oklch(63.42% 0.191 144.41);
+}
+
+.tech-icon.sqlite-icon {
+  --tech-color: oklch(57.25% 0.134 245.74);
+}
+
+.tech-icon.java-icon {
+  --tech-color: oklch(74.21% 0.172 65.56);
+}
+
+.tech-icon.ocaml-icon {
+  --tech-color: oklch(73.6% 0.178 65.53);
+}
+
+.tech-icon.lua-icon {
+  --tech-color: oklch(26.72% 0.173 267.2);
+}

@@ -21,7 +21,7 @@ Datastar fixes that. 11 KB. It takes HTML responses or SSE streams, you annotate
 
 Four Java files, one HTML template:
 
-#+BEGIN_SRC
+#+BEGIN_SRC text
 Browser  ──GET /──▶  GameController  ──renders──▶  index.jinja
                                                        │
 Browser  ──GET /sse──▶  SSE stream ◀── GameService ────┘

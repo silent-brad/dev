@@ -44,8 +44,6 @@
 
 <script>
 (function () {
-  var CELL_SIZE = 13; // 11px cell + 2px gap
-
   fetch('/github-contributions.json')
     .then(function (r) { return r.json(); })
     .then(function (json) {
@@ -131,15 +129,18 @@
         }
       });
 
-      // Build month labels using absolute positioning
+      // Build month labels using actual rendered column positions
       var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       var lastMonth = -1;
+      var weekEls = grid.querySelectorAll('.heatmap-week');
+      var gridRect = grid.getBoundingClientRect();
       var monthHtml = '';
       for (var w = 0; w < weeks.length; w++) {
         var day = weeks[w].contributionDays[0];
         var month = new Date(day.date).getMonth();
         if (month !== lastMonth) {
-          var left = w * CELL_SIZE;
+          var weekRect = weekEls[w].getBoundingClientRect();
+          var left = weekRect.left - gridRect.left;
           monthHtml += '<span style="position:absolute;left:' + left + 'px">' +
             monthNames[month] + '</span>';
           lastMonth = month;

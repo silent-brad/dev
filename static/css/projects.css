@@ -1,0 +1,142 @@
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.8rem 1rem;
+  cursor: default;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.project-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: #374151;
+  @media (prefers-color-scheme: dark) {
+    color: #f9fafb;
+  }
+}
+
+.project-name:hover {
+  color: #a35252;
+  @media (prefers-color-scheme: dark) {
+    color: #faa0a0;
+  }
+}
+
+.project-site-link {
+  display: inline-flex;
+  padding: 0.3rem;
+  text-decoration: none;
+}
+
+.project-site-link svg {
+  width: 1rem;
+  height: 1rem;
+  stroke: var(--color-text-body);
+}
+
+.project-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-body);
+  line-height: 1.4;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.project-tech-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 0.3rem;
+  box-shadow:
+    inset 0 -1px 0 0 oklch(from var(--tech-color) l c h / 0.3),
+    inset 0 0 1px 1px oklch(from var(--tech-color) l c h / 0.2),
+    0 1px 1px 0 oklch(from var(--tech-color) l c h / 0.25);
+  background: oklch(from var(--tech-color) l c h / 0.1);
+}
+
+.project-tech-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: #a35252;
+  @media (prefers-color-scheme: dark) {
+    fill: #d08a8a;
+  }
+}
+
+/* currentColor icons (stroke-based) */
+.project-tech-icon.org-icon svg,
+.project-tech-icon.datastar-icon svg,
+.project-tech-icon.hyprland-icon svg {
+  fill: none;
+  color: #a35252;
+  @media (prefers-color-scheme: dark) {
+    color: #d08a8a;
+  }
+}
+
+.project-tech-icon.jinja2-icon svg {
+  color: #a35252;
+  @media (prefers-color-scheme: dark) {
+    color: #d08a8a;
+  }
+}
+
+/* Tech colors for missing icons */
+.project-tech-icon.rust-icon {
+  --tech-color: oklch(49.53% 0.079 46.67);
+}
+
+.project-tech-icon.org-icon {
+  --tech-color: oklch(62.79% 0.143 149.58);
+}
+
+.project-tech-icon.datastar-icon {
+  --tech-color: oklch(60.42% 0.151 265.75);
+}
+
+.project-tech-icon.jinja2-icon {
+  --tech-color: oklch(56.54% 0.147 19.57);
+}
+
+.project-tech-icon.hyprland-icon {
+  --tech-color: oklch(67.14% 0.178 225.75);
+}
+
+/* Reuse existing tech colors */
+.project-tech-icon.nix-icon {
+  --tech-color: oklch(59.28% 0.139 255.26);
+}
+
+.project-tech-icon.ocaml-icon {
+  --tech-color: oklch(73.6% 0.178 65.53);
+}
+
+.project-tech-icon.nushell-icon {
+  --tech-color: oklch(63.42% 0.191 144.41);
+}
+
+.project-tech-icon.lua-icon {
+  --tech-color: oklch(26.72% 0.173 267.2);
+}

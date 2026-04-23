@@ -24,12 +24,18 @@ pre {
   font-family:
     "Fira Code", Consolas, Monaco, Menlo, "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", "Courier New", monospace;
-  background: #f8f5ec;
+  background: #f5eded;
+  @media (prefers-color-scheme: dark) {
+    background: #2a1616;
+  }
 }
 code {
   padding: 3px 5px;
   border-radius: 4px;
-  color: #c7254e;
+  color: #993c3c;
+  @media (prefers-color-scheme: dark) {
+    color: #e8a0a0;
+  }
 }
 pre > code {
   display: block;
@@ -38,7 +44,7 @@ figure.highlight {
   margin: 1em 0;
   border-radius: 5px;
   overflow-x: auto;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+  box-shadow: 1px 1px 2px rgba(56, 11, 11, 0.2);
   position: relative;
 
   & .highlight table {
@@ -53,9 +59,13 @@ figure.highlight {
     padding: 2px 7px;
     font-size: 0.9em;
     font-weight: bold;
-    color: #b1b1b1;
-    background: #f4efe1;
+    color: #c9a0a0;
+    background: #eedede;
     content: "Code";
+    @media (prefers-color-scheme: dark) {
+      color: #7a4a4a;
+      background: #231212;
+    }
   }
 
   &.language-elixir > table::after {
@@ -194,7 +204,12 @@ figure.highlight {
   }
   & .gutter {
     width: 10px;
-    color: #cacaca;
+    color: #c9a0a0;
+    border-right: 1px dotted #d4b0b0;
+    @media (prefers-color-scheme: dark) {
+      color: #6b3a3a;
+      border-right: 1px dotted #4a2525;
+    }
   }
   & .gutter pre {
     margin: 0;
@@ -213,12 +228,14 @@ figure.highlight {
   }
   & .code .hljs-comment,
   & .code .hljs-quote {
-    color: #93a1a1;
+    color: #b8a0a0;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & .code .hljs-keyword,
   & .code .hljs-selector-tag,
   & .code .hljs-addition {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & .code .hljs-number,
   & .code .hljs-string,
@@ -226,14 +243,16 @@ figure.highlight {
   & .code .hljs-literal,
   & .code .hljs-doctag,
   & .code .hljs-regexp {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & .code .hljs-title,
   & .code .hljs-section,
   & .code .hljs-name,
   & .code .hljs-selector-id,
   & .code .hljs-selector-class {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & .code .hljs-attribute,
   & .code .hljs-attr,
@@ -241,7 +260,8 @@ figure.highlight {
   & .code .hljs-template-variable,
   & .code .hljs-class .hljs-title,
   & .code .hljs-type {
-    color: #b58900;
+    color: #b35555;
+    @media (prefers-color-scheme: dark) { color: #c97878; }
   }
   & .code .hljs-symbol,
   & .code .hljs-bullet,
@@ -251,14 +271,17 @@ figure.highlight {
   & .code .hljs-selector-attr,
   & .code .hljs-selector-pseudo,
   & .code .hljs-link {
-    color: #cb4b16;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & .code .hljs-built_in,
   & .code .hljs-deletion {
-    color: #dc322f;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & .code .hljs-formula {
-    background: #eee8d5;
+    background: #f5eded;
+    @media (prefers-color-scheme: dark) { background: #2a1616; }
   }
   & .code .hljs-emphasis {
     font-style: italic;
@@ -272,9 +295,12 @@ figure.highlight {
     margin: 1em 0;
     border-radius: 5px;
     overflow-x: auto;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+    box-shadow: 1px 1px 2px rgba(56, 11, 11, 0.2);
     position: relative;
-    background: #f8f5ec;
+    background: #f5eded;
+    @media (prefers-color-scheme: dark) {
+      background: #2a1616;
+    }
   }
   & > .chroma code {
     padding: 0;
@@ -290,9 +316,13 @@ figure.highlight {
     padding: 2px 7px;
     font-size: 0.9em;
     font-weight: bold;
-    color: #b1b1b1;
-    background: #f4efe1;
+    color: #c9a0a0;
+    background: #eedede;
     content: "Code";
+    @media (prefers-color-scheme: dark) {
+      color: #7a4a4a;
+      background: #231212;
+    }
   }
   & > .chroma.language-elixir > table::after {
     content: "Elixir";
@@ -428,10 +458,18 @@ figure.highlight {
   }
   & > .chroma .lntd:first-child {
     width: 10px;
+    border-right: 1px dotted #d4b0b0;
+    @media (prefers-color-scheme: dark) {
+      border-right: 1px dotted #4a2525;
+    }
   }
   & > .chroma .lntd:first-child pre {
     margin: 0;
     padding: 30px 7px 10px;
+    color: #c9a0a0;
+    @media (prefers-color-scheme: dark) {
+      color: #6b3a3a;
+    }
   }
   & > .chroma .lntd:last-child {
     vertical-align: top;
@@ -449,239 +487,311 @@ figure.highlight {
     border-collapse: collapse;
   }
   & > .chroma .1st {
-    color: #cacaca;
+    color: #c9a0a0;
+    @media (prefers-color-scheme: dark) { color: #6b3a3a; }
   }
   & > .chroma .hl {
     display: block;
     width: 100%;
-    background-color: #ffc;
+    background-color: rgba(163, 82, 82, 0.15);
+    @media (prefers-color-scheme: dark) { background-color: rgba(208, 138, 138, 0.1); }
   }
   & > .chroma .k {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .kc {
-    color: #859900;
+    color: #993c3c;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .kd {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .kn {
-    color: #dc322f;
+    color: #7a2020;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .kp {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .kr {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .kt {
-    color: #859900;
+    color: #993c3c;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .n {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .na {
-    color: #268bd2;
+    color: #b35555;
+    @media (prefers-color-scheme: dark) { color: #c97878; }
   }
   & > .chroma .nb {
-    color: #cb4b16;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .bp {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nc {
-    color: #cb4b16;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .no {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nd {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .ni {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .ne {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nf {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .fm {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nl {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nn {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nx {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .py {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nt {
-    color: #268bd2;
+    color: #7a2020;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .nv {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .vc {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .vg {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .vi {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .vm {
-    color: #268bd2;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e8a0a0; }
   }
   & > .chroma .l {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .ld {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .s {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sa {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sb {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sc {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .dl {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sd {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .s2 {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .se {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sh {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .si {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sx {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .sr {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .s1 {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .ss {
-    color: #2aa198;
+    color: #a35252;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .m {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .mb {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .mf {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .mh {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .mi {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .il {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .mo {
-    color: #2aa198;
+    color: #a35252;
     font-weight: bold;
+    @media (prefers-color-scheme: dark) { color: #d08a8a; }
   }
   & > .chroma .ow {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .c {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .ch {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .cm {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .c1 {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .cs {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .cp {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .cpf {
-    color: #93a1a1;
+    color: #b8a0a0;
     font-style: italic;
+    @media (prefers-color-scheme: dark) { color: #6b4a4a; }
   }
   & > .chroma .g {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gd {
-    color: #b58900;
+    color: #7a2020;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .ge {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gr {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gh {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gi {
-    color: #859900;
+    color: #993c3c;
+    @media (prefers-color-scheme: dark) { color: #e08080; }
   }
   & > .chroma .go {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gp {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gs {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gu {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
   & > .chroma .gt {
-    color: #d33682;
+    color: #c25555;
+    @media (prefers-color-scheme: dark) { color: #e06666; }
   }
 }

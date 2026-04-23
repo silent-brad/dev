@@ -1,4 +1,5 @@
 local links = require("links")
+local projects = require("projects")
 
 site = {
 	name = "Brad White",
@@ -23,15 +24,23 @@ collections = {
 
 pages = {
 	{ output = "index.html", template = "index.html" },
+	{ output = "posts.html", template = "posts.html" },
 	{ output = "404.html", template = "404.html" },
 	{ output = "rss.xml", template = "rss.xml", collections = { "posts" } },
-	{ output = "tags.html", template = "tags.html" },
 	{
 		output = "sites.html",
 		template = "sites.html",
 		args = {
 			heading = "Favorite Dev Sites (mostly blogs)",
 			links = links,
+		},
+	},
+	{
+		output = "projects.html",
+		template = "projects.html",
+		args = {
+			heading = "My Dev Projects",
+			projects = projects,
 		},
 	},
 }

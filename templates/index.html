@@ -19,22 +19,16 @@
 {% include "heatmap.html" %}
 
 {%- if posts %}
-      <h2>Posts</h2>
+      <h2>Latest Posts</h2>
+      <a href="/posts">More posts</a>
       <ul class="post-list">
 {%- for post in posts %}
+{%- if loop.index <= 5 %}
         <li>
           <a href="{{ post.url }}">{{ post.title }}</a>
           <time datetime="{{ post.date }}">{{ post.date_formatted }}</time>
         </li>
-{%- endfor %}
-      </ul>
 {%- endif %}
-
-{%- if tags %}
-      <h2>Tags</h2>
-      <ul>
-{%- for tag in tags %}
-        <li><a href="{{ tag.url }}">{{ tag.name }}</a> ({{ tag.count }})</li>
 {%- endfor %}
       </ul>
 {%- endif %}

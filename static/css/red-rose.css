@@ -1,0 +1,133 @@
+/*!
+  Theme: Red Rose
+  Description: Custom theme matching the site's red palette with warm accents
+*/
+
+/* Comment */
+.hljs-meta,
+.hljs-comment {
+  color: #b8a0a0;
+  @media (prefers-color-scheme: dark) {
+    color: #6b4a4a;
+  }
+}
+
+/* Keywords, HTML elements, Regex */
+.hljs-tag,
+.hljs-doctag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-template-tag,
+.hljs-selector-pseudo,
+.hljs-selector-attr,
+.hljs-variable.language_,
+.hljs-deletion {
+  color: #993c3c;
+  @media (prefers-color-scheme: dark) {
+    color: #e08080;
+  }
+}
+
+/* Numbers and constants — warm amber */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-number,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-link {
+  color: #9e6b30;
+  @media (prefers-color-scheme: dark) {
+    color: #d4a56a;
+  }
+}
+
+/* Built-ins, attributes — dusty coral */
+.hljs-built_in,
+.hljs-attribute {
+  color: #b05a3a;
+  @media (prefers-color-scheme: dark) {
+    color: #e09070;
+  }
+}
+
+/* Selector tags */
+.hljs-selector-tag {
+  color: #7a2020;
+  @media (prefers-color-scheme: dark) {
+    color: #e8a0a0;
+  }
+}
+
+/* Titles, properties, keywords — bold crimson */
+.hljs-keyword,
+.hljs-title.function_,
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-subst,
+.hljs-property {
+  color: #8a2e5a;
+  @media (prefers-color-scheme: dark) {
+    color: #d88aaf;
+  }
+}
+
+/* Strings — warm rose */
+.hljs-quote,
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #8a6340;
+  @media (prefers-color-scheme: dark) {
+    color: #c9a878;
+  }
+}
+
+/* Functions, sections — deeper plum */
+.hljs-code,
+.hljs-formula,
+.hljs-section {
+  color: #7a3060;
+  @media (prefers-color-scheme: dark) {
+    color: #c480a0;
+  }
+}
+
+/* Operators, names, attrs — rich burgundy */
+.hljs-name,
+.hljs-operator,
+.hljs-char.escape_,
+.hljs-attr {
+  color: #6e3b3b;
+  @media (prefers-color-scheme: dark) {
+    color: #cc9090;
+  }
+}
+
+/* Punctuation */
+.hljs-punctuation {
+  color: #5a3030;
+  @media (prefers-color-scheme: dark) {
+    color: #c9a0a0;
+  }
+}
+
+.hljs {
+  background: #f5eded;
+  color: #5a3030;
+  @media (prefers-color-scheme: dark) {
+    background: #2a1616;
+    color: #c9a0a0;
+  }
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

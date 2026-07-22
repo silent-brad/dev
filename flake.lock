@@ -8,11 +8,11 @@
         "orgcaml": "orgcaml"
       },
       "locked": {
-        "lastModified": 1776957185,
-        "narHash": "sha256-Fs34Be3w/CLbm/EQ5lUud92R+RQ/dJLfnIZlWQsp2Ds=",
+        "lastModified": 1784735468,
+        "narHash": "sha256-nG6IZwCcCrepNbzHx9V1bCJ1o0p0ylMOuWSO22qZyRE=",
         "owner": "silent-brad",
         "repo": "dreamlog",
-        "rev": "aa5a31064e6f25adbc0afd3071eceda9a62ad7ec",
+        "rev": "c3a661d5c0d656fb9c29487f06899b6b3de2afe9",
         "type": "github"
       },
       "original": {
@@ -212,11 +212,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1776866859,
-        "narHash": "sha256-rpFwERVWo4WhayZLG9CsZd267S+NNkVv3BJZxVzFfZI=",
+        "lastModified": 1784733010,
+        "narHash": "sha256-EUr77QI1+XzSOXqPWW90dZPzEVvPFfFbAGagslMxd+U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "853df46232c84b7532a3fdcff499bf2c12db36cd",
+        "rev": "b7ed9466c52daaf275a801e6abf9850b6d941945",
         "type": "github"
       },
       "original": {
